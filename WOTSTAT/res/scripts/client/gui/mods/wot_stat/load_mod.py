@@ -118,11 +118,11 @@ def init_mod():
   wotHookEvents.onConnected += on_connected
   wotHookEvents.onHangarLoaded += on_hangar_loaded_event
 
-  BigWorld.callback(0, injectBattleResultFix)
+  BigWorld.callback(1, injectBattleResultFix)
 
 def injectBattleResultFix():
   print('aaaallasdasdo wasdorld')
-  print_log("BattleResultFix: %s" % setupFixedBattleResultsCache())
+  # print_log("BattleResultFix: %s" % setupFixedBattleResultsCache())
 
 
 
