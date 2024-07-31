@@ -16,14 +16,14 @@ jobs:
       - name: Get current tag
         id: current-tag
         run: |
-          TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          TAG=$(git describe --tags `git rev-list --tags --max-count=1` 2>/dev/null || echo "none")
           echo "current-tag=${TAG}" >> $GITHUB_ENV
 
       - name: Calculate new tag
         id: new-tag
         run: |
           CURRENT_TAG=${{ env.current-tag }}
-          if [ -z "$CURRENT_TAG" ]; then
+          if [ "$CURRENT_TAG" = "none" ]; then
             NEW_TAG="1.1.1.1"
           else
             MAJOR=$(echo $CURRENT_TAG | cut -d. -f1)
