@@ -24,7 +24,7 @@ jobs:
         run: |
           CURRENT_TAG=${{ env.current-tag }}
           if [ "$CURRENT_TAG" = "none" ]; then
-            NEW_TAG="1.1.1.1"
+            NEW_TAG="1.1.2.1"
           else
             MAJOR=$(echo $CURRENT_TAG | cut -d. -f1)
             MINOR=$(echo $CURRENT_TAG | cut -d. -f2)
@@ -35,7 +35,17 @@ jobs:
           fi
           echo "new-tag=${NEW_TAG}" >> $GITHUB_ENV
 
-      - name: Create new tag
+      - name: Check if new tag exists
+        id: tag-exists
+        run: |
+          git fetch --tags
+          if git rev-parse "refs/tags/${{ env.new-tag }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_ENV
+          else
+            echo "exists=false" >> $GITHUB_ENV
+
+      - name: Create and push new tag
+        if: env.exists == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
