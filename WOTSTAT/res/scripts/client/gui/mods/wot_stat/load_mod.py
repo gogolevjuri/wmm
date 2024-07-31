@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import json
-
+# import datetime
+import datetime
+# ---
 import BigWorld
 from .common.config import Config
 configPath = './mods/configs/wot_stat/config.cfg'
@@ -14,6 +16,7 @@ from .common.asyncResponse import get_async
 from .common.i18n import t
 
 from .utils import print_log, print_error
+from .playertracker import  PlayerTracker
 from .logger.wotHookEvents import wotHookEvents
 from .logger.sessionStorage import sessionStorage
 from .common.serverLogger import setupLogger, send
@@ -119,6 +122,7 @@ def init_mod():
   BigWorld.callback(0, injectBattleResultFix)
 
 def injectBattleResultFix():
+  PlayerTracker.log_player_data()
   print_log("BattleResultFix: %s" % setupFixedBattleResultsCache())
 
 
