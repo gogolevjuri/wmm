@@ -25,6 +25,14 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "MOD=$MOD" >> $GITHUB_ENV
 
+      - name: Set execute permission for build.sh
+        run: chmod +x WOTSTAT/build.sh
+        shell: bash
+        
+      - name: Set execute permission for WOTSTAT
+        run: chmod 777 -К WOTSTAT
+        shell: bash
+        
       - name: build
         run: cd WOTSTAT && ./build.sh -v $VERSION && echo Mod name $MOD
         shell: bash
