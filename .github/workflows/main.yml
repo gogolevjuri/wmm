@@ -1,19 +1,20 @@
-name: Auto Release
+name: release
 
 on:
-  push:
-    branches:
-      - main  # або інша гілка, на якій ви хочете запускати цей процес
+  create:
+    tags: ['v*']
+    branches: main
 
 jobs:
-  create_release:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v3
 
+      - name: Set up Python 2.7
+        uses: LizardByte/setup-python-action@master
+        with:
+          python-version: '2.7'
 
       - name: Get latest tag
         id: get_tag
@@ -57,18 +58,13 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Set up Python 2.7
-        uses: LizardByte/setup-python-action@master
-        with:
-          python-version: '2.7'
-
       - name: mod name
         run: |
           VERSION=${GITHUB_REF_NAME#v}
-          MOD=mod.wotStat_${{ env.new_version }}.wotmod
-          echo Version: ${{ env.new_version }}
+          MOD=mod.wotStat_$VERSION.wotmod
+          echo Version: $VERSION
           echo Mod name: $MOD
-          echo "VERSION=${{ env.new_version }}" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "MOD=$MOD" >> $GITHUB_ENV
 
       - name: Set execute permission for build.sh
