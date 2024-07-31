@@ -1,15 +1,61 @@
-name: release
+name: Auto Release
 
 on:
-  create:
-    tags: ['v*']
-    branches: main
+  push:
+    branches:
+      - main  # або інша гілка, на якій ви хочете запускати цей процес
 
 jobs:
-  release:
+  create_release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          latest_tag=$(git tag | sort -V | tail -n 1)
+          if [ -z "$latest_tag" ]; then
+            echo "No tags found, setting latest_tag to 1.2.1.0"
+            latest_tag="1.2.1.0"
+          fi
+          echo "Latest tag: $latest_tag"
+          echo "latest_tag=$latest_tag" >> $GITHUB_ENV
+      
+      
+
+      - name: Increment version
+        id: increment_version
+        run: |
+          version="${{ env.latest_tag }}"
+          if [ -z "$version" ]; then
+            version="1.2.0.1"
+          fi
+          IFS='.' read -r -a version_parts <<< "$version"
+          new_version="${version_parts[0]}.${version_parts[1]}.${version_parts[2]}.$((${version_parts[3]} + 1))"
+          echo "New version: $new_version"
+          echo "new_version=$new_version" >> $GITHUB_ENV
+
+      - name: Create new tag
+        run: |
+          git config user.name "gogolevjuri"
+          git config user.email "gogolevjuri@gmail.com"
+          git tag ${{ env.new_version }}
+          git push origin ${{ env.new_version }}
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.new_version }}
+          release_name: ${{ env.new_version }}
+          draft: false
+          prerelease: false
 
       - name: Set up Python 2.7
         uses: LizardByte/setup-python-action@master
@@ -19,10 +65,10 @@ jobs:
       - name: mod name
         run: |
           VERSION=${GITHUB_REF_NAME#v}
-          MOD=mod.wotStat_$VERSION.wotmod
-          echo Version: $VERSION
+          MOD=mod.wotStat_${{ env.new_version }}.wotmod
+          echo Version: ${{ env.new_version }}
           echo Mod name: $MOD
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "VERSION=${{ env.new_version }}" >> $GITHUB_ENV
           echo "MOD=$MOD" >> $GITHUB_ENV
 
       - name: Set execute permission for build.sh
