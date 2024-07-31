@@ -1,0 +1,6 @@
+<root>
+    <id>mod.wot_stat</id>
+    <version>{{VERSION}}</version>
+    <name>wot_stat</name>
+    <description>Collect statistics</description>
+</root>
