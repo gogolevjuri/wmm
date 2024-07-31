@@ -79,6 +79,17 @@ jobs:
           name: ${{ env.MOD }}
           path: WOTSTAT/${{ env.MOD }}
 
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.new_version }}
+          release_name: ${{ env.new_version }}
+          draft: false
+          prerelease: false
+          files: WOTSTAT/${{ env.MOD }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: upload linux artifact
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
@@ -94,6 +105,7 @@ jobs:
 
             ----------------------
             `canary_upgrade=0.0`
+
 
 
 
