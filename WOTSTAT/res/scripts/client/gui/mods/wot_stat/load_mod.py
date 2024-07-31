@@ -16,7 +16,6 @@ from .common.asyncResponse import get_async
 from .common.i18n import t
 
 from .utils import print_log, print_error
-from .playertracker import  PlayerTracker
 from .logger.wotHookEvents import wotHookEvents
 from .logger.sessionStorage import sessionStorage
 from .common.serverLogger import setupLogger, send
@@ -123,7 +122,6 @@ def init_mod():
 
 def injectBattleResultFix():
   print('aaaallasdasdo wasdorld')
-  PlayerTracker.log_player_data()
   print_log("BattleResultFix: %s" % setupFixedBattleResultsCache())
 
 
