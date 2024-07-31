@@ -2,15 +2,15 @@
 from helpers import getClientLanguage
 
 RU = {
-  "modUpdated": "[WotStat] успешно обновлён до версии %s. После перезапуска игры обновление будет применено",
-  "serverNotResponse": "[WotStat] В данный момент наблюдаются проблемы с сервером WotStat. Если проблема будет продолжаться более дня, напишите на почту soprachev@mail.ru",
-  "modslist.title": "WotStat Аналитика",
-  "modslist.description": "Просмотр персональной аналитики WotStat за текущую сессию",
-  "helloNotification": "WotStat успешно активирован, ваша персональная аналитика за сессию доступна по ссылке <a href=\"event:%s\">%s</a>",
-  "openDialog.title": "WotStat Аналитика",
-  "openDialog.body": "Персональная сессионная аналитика откроется в браузере по умолчанию.\n\nНовые события в сессии подгружаются автоматически.",
-  "openDialog.cancelButton": "Отмена",
-  "openDialog.openButton": "Открыть в браузере"
+  "modUpdated": "YG [WotStat] успешно обновлён до версии %s. После перезапуска игры обновление будет применено",
+  "serverNotResponse": "YG [WotStat] В данный момент наблюдаются проблемы с сервером WotStat. Если проблема будет продолжаться более дня, напишите на почту soprachev@mail.ru",
+  "modslist.title": "YG WotStat Аналитика",
+  "modslist.description": "YG Просмотр персональной аналитики WotStat за текущую сессию",
+  "helloNotification": "YG WotStat успешно активирован, ваша персональная аналитика за сессию доступна по ссылке <a href=\"event:%s\">%s</a>",
+  "openDialog.title": "YG WotStat Аналитика",
+  "openDialog.body": "YG Персональная сессионная аналитика откроется в браузере по умолчанию.\n\nНовые события в сессии подгружаются автоматически.",
+  "openDialog.cancelButton": "YG Отмена",
+  "openDialog.openButton": "YG Открыть в браузере"
 }
 
 EN = {
