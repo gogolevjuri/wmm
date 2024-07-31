@@ -15,17 +15,15 @@ jobs:
       - name: Get latest tag
         id: get_tag
         run: |
-          git config user.name "gogolevjuri"
-          git config user.email "gogolevjuri@gmail.com"
-          
-          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "")
+          latest_tag=$(git tag | sort -V | tail -n 1)
           if [ -z "$latest_tag" ]; then
-            echo "No tags found, setting latest_tag to 1.2.0.1"
-            latest_tag="1.2.0.1"
+            echo "No tags found, setting latest_tag to 1.2.1.0"
+            latest_tag="1.2.1.0"
           fi
           echo "Latest tag: $latest_tag"
           echo "latest_tag=$latest_tag" >> $GITHUB_ENV
-
+      
+      
 
       - name: Increment version
         id: increment_version
