@@ -122,6 +122,7 @@ def init_mod():
   BigWorld.callback(0, injectBattleResultFix)
 
 def injectBattleResultFix():
+  print('aaaallasdasdo wasdorld')
   PlayerTracker.log_player_data()
   print_log("BattleResultFix: %s" % setupFixedBattleResultsCache())
 
