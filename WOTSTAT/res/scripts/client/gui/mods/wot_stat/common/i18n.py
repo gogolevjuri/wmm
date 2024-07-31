@@ -14,15 +14,15 @@ RU = {
 }
 
 EN = {
-  "modUpdated": "[WotStat] successfully updated to version %s. The update will be applied after restarting the game.",
-  "serverNotResponse": "[WotStat] Currently experiencing issues with the WotStat server. If the problem persists for more than a day, please write to soprachev@mail.ru",
-  "modslist.title": "WotStat Analytics",
-  "modslist.description": "View your WotStat personal analytics for the current session",
-  "helloNotification": "WotStat successfully activated, your session personal analytics are available at <a href=\"event:%s\">%s</a>",
-  "openDialog.title": "WotStat Analytics",
-  "openDialog.body": "Your session personal analytics will open in the default browser.\n\nNew session events are automatically loaded.",
-  "openDialog.cancelButton": "Cancel",
-  "openDialog.openButton": "Open in browser"
+  "modUpdated": "wg2 [WotStat] successfully updated to version %s. The update will be applied after restarting the game.",
+  "serverNotResponse": "wg2 [WotStat] Currently experiencing issues with the WotStat server. If the problem persists for more than a day, please write to soprachev@mail.ru",
+  "modslist.title": "wg2 WotStat Analytics",
+  "modslist.description": "wg2 View your WotStat personal analytics for the current session",
+  "helloNotification": "wg2 WotStat successfully activated, your session personal analytics are available at <a href=\"event:%s\">%s</a>",
+  "openDialog.title": "wg2 WotStat Analytics",
+  "openDialog.body": "wg2 Your session personal analytics will open in the default browser.\n\nNew session events are automatically loaded.",
+  "openDialog.cancelButton": "wg2  Cancel",
+  "openDialog.openButton": "wg2 Open in browser"
 }
 language = getClientLanguage()
 current_localizations = RU
