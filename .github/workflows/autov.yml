@@ -55,10 +55,10 @@ jobs:
       - name: mod name
         run: |
           VERSION=${GITHUB_REF_NAME#v}
-          MOD=mod.wotStat_$VERSION.wotmod
-          echo Version: $VERSION
+          MOD=mod.wotStat_${{ env.new_version }}.wotmod
+          echo Version: ${{ env.new_version }}
           echo Mod name: $MOD
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "VERSION=${{ env.new_version }}" >> $GITHUB_ENV
           echo "MOD=$MOD" >> $GITHUB_ENV
 
       - name: Set execute permission for build.sh
