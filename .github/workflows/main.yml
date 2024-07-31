@@ -30,7 +30,7 @@ jobs:
         shell: bash
         
       - name: Set execute permission for WOTSTAT
-        run: chmod 777 -К WOTSTAT
+        run: chmod 777 -R WOTSTAT
         shell: bash
         
       - name: build
