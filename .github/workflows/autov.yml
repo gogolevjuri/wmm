@@ -17,8 +17,8 @@ jobs:
         run: |
           latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "")
           if [ -z "$latest_tag" ]; then
-            echo "No tags found, setting latest_tag to 1.1.4.0"
-            latest_tag="1.1.4.0"
+            echo "No tags found, setting latest_tag to 1.2.0.1"
+            latest_tag="1.2.0.1"
           fi
           echo "Latest tag: $latest_tag"
           echo "latest_tag=$latest_tag" >> $GITHUB_ENV
@@ -29,7 +29,7 @@ jobs:
         run: |
           version="${{ env.latest_tag }}"
           if [ -z "$version" ]; then
-            version="1.1.4.0"
+            version="1.2.0.1"
           fi
           IFS='.' read -r -a version_parts <<< "$version"
           new_version="${version_parts[0]}.${version_parts[1]}.${version_parts[2]}.$((${version_parts[3]} + 1))"
