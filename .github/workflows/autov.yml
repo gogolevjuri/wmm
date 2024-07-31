@@ -73,11 +73,6 @@ jobs:
         run: cd WOTSTAT && ./build.sh -v $VERSION && echo Mod name $MOD
         shell: bash
 
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.MOD }}
-          path: WOTSTAT/${{ env.MOD }}
 
       - name: upload linux artifact
         uses: softprops/action-gh-release@v1
@@ -87,7 +82,7 @@ jobs:
           release_name: ${{ env.new_version }}
           draft: false
           prerelease: false
-          files: WOTSTAT/${{ env.MOD }}
+          files: WOTSTAT/mod.wotStat_1.2.1.11.wotmod
           token: ${{ github.token }}
           body: |
 
