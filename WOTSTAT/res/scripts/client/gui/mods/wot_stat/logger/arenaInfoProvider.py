@@ -47,6 +47,7 @@ class ArenaInfoProvider():
   def start(self, *a, **k):
 
     def waitVehicles():
+      print_log("YGL waitVehicles ")
       vehicles = BigWorld.player().arena.vehicles.items()
       if len(vehicles) == 0:
         BigWorld.callback(0.1, waitVehicles)

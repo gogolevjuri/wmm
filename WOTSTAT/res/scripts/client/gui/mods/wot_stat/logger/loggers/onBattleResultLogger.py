@@ -37,6 +37,7 @@ class OnBattleResultLogger:
 
   @with_exception_sending
   def battle_result_cache_checker(self):
+    print_log("YGL battle_result_cache_checker ")
     BigWorld.callback(3, self.battle_result_cache_checker)
 
     def result_callback(arenaID, code, result):
