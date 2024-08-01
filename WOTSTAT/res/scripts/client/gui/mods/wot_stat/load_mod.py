@@ -120,14 +120,14 @@ def init_mod():
 
   BigWorld.callback(0, injectBattleResultFix)
 
-  BigWorld.callback(1, ygogolevtest)
+  # BigWorld.callback(1, ygogolevtest)
 
 def injectBattleResultFix():
   print_log("BattleResultFix: %s" % setupFixedBattleResultsCache())
 
-def ygogolevtest():
-  print_log("OK everys its wokrks")
-  BigWorld.callback(1, ygogolevtest)
+# def ygogolevtest():
+#   print_log("OK everys its wokrks")
+#   BigWorld.callback(1, ygogolevtest)
 
 
 
