@@ -109,7 +109,7 @@ class OnShotLogger:
       self.cachedVehicle = BigWorld.player().vehicle
 
   def check_shot_result(self):
-    print_log("YGL check_shot_result ")
+    # print_log("YGL check_shot_result ")
     BigWorld.callback(1, self.check_shot_result)
     shotEventCollector.process_events()
     results = shotEventCollector.get_result()
