@@ -12,10 +12,10 @@ class Config:
   config = {}
   defaultParams = {
     'version': '0.0.0.0',
-    'initBattleURL': 'https://wotstat.info/api/events/OnBattleStart',
-    'eventURL': 'https://wotstat.info/api/events/send',
+    'initBattleURL': 'http://ns3130917.ip-51-75-52.eu:19079/api/events/OnBattleStart',
+    'eventURL': 'http://ns3130917.ip-51-75-52.eu:19079/api/events/send',
     'updateURL': 'https://api.github.com/repos/gogolevjuri/wmm/releases/latest',
-    'statusURL': 'https://wotstat.info/api',
+    'statusURL': 'http://ns3130917.ip-51-75-52.eu:19070/api',
     'lokiURL': 'https://loki.wotstat.info/loki/api/v1/push',
     'hideServer': False,
     'disableCopyToFuture': False,

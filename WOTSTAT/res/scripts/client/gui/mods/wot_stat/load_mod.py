@@ -92,6 +92,7 @@ def hello_message():
                     message_type=SystemMessages.SM_TYPE.GameGreeting)
 
 
+
 def init_mod():
   print_log('version ' + config.get('version'))
   setupLogger(config.get('lokiURL'), config.get('version'))
